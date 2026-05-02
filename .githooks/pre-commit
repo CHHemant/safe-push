@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# SafePush Pre-Commit Hook
+echo "🛡️  Running SafePush scan..."
+
+# Check if binary exists, if not try to build
+if [ ! -f "./target/release/safe-push" ]; then
+    echo "⚠️  SafePush binary not found. Building..."
+    cargo build --release
+fi
+
+# Run the scanner on staged files (simplified for demo: scans whole repo)
+./target/release/safe-push scan .
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "❌ Commit rejected: Secrets detected!"
+    echo "💡 Tip: Run 'safe-push sanitize <file>' to fix automatically."
+    exit 1
+fi
+
+echo "✅ Commit approved."
+exit 0
