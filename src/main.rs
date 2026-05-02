@@ -67,6 +67,10 @@ fn main() {
 
             let entries = WalkDir::new(&target_path)
                 .into_iter()
+                .filter_entry(|e| {
+                    !(e.file_type().is_dir()
+                        && e.file_name().to_str().map(|s| s == ".git").unwrap_or(false))
+                })
                 .filter_map(|e| e.ok())
                 .filter(|e| e.path().is_file());
 
@@ -97,7 +101,7 @@ fn main() {
                     std::process::exit(1);
                 }
             };
-            let mut sanitized = content.clone();
+            let mut sanitized = content;
 
             for pattern in sanitize_patterns() {
                 sanitized = pattern.replace_all(&sanitized, "[REDACTED]").to_string();
