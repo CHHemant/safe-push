@@ -1,4 +1,4 @@
-# 🛡️ SafePush
+# SafePush
 
 <div align="center">
 
@@ -12,15 +12,15 @@
 
 > **Stop leaking API keys, passwords, and PII.** SafePush is a blazing-fast, zero-config tool written in Rust that scans your code at commit time and sanitizes diffs for public sharing.
 
-## ✨ Why SafePush?
+## Why SafePush?
 
 Most security tools scan *after* a leak happens. SafePush stops it **at the source**:
-- 🚫 **Pre-Commit Blocking:** Prevents accidental pushes of secrets.
-- 🛠️ **Auto-Sanitization:** One command to generate a "safe diff" for GitHub Issues.
-- ⚡ **Blazing Fast:** Built in Rust for instant scanning of large repositories.
-- 🐳 **Zero Dependencies:** Single binary, no runtime installation required.
+-  **Pre-Commit Blocking:** Prevents accidental pushes of secrets.
+-  **Auto-Sanitization:** One command to generate a "safe diff" for GitHub Issues.
+-  **Blazing Fast:** Built in Rust for instant scanning of large repositories.
+-  **Zero Dependencies:** Single binary, no runtime installation required.
 
-## 🚀 Installation
+## Installation
 
 ### 1. Install via Cargo (Recommended)
 ```bash
@@ -41,7 +41,7 @@ cp .githooks/pre-commit .git/hooks/pre-commit
 chmod +x .git/hooks/pre-commit
 ```
 
-## 💡 Usage
+## Usage
 
 ### Scan a Directory
 Check your current project for leaks:
@@ -61,7 +61,7 @@ Try to commit a file with an API key:
 ```bash
 git add .
 git commit -m "feat: update config"
-# ❌ SafePush will block this and show the error!
+# SafePush will block this and show the error!
 ```
 
 ## 🔍 Detected Patterns
