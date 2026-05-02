@@ -64,7 +64,7 @@ git commit -m "feat: update config"
 # SafePush will block this and show the error!
 ```
 
-## 🔍 Detected Patterns
+## Detected Patterns
 
 SafePush currently detects:
 
@@ -78,7 +78,7 @@ SafePush currently detects:
 
 > **Note:** You can extend patterns by editing `src/main.rs`.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Whether it's adding new regex patterns, improving the CLI, or fixing bugs, please open an issue or PR.
 
@@ -88,11 +88,11 @@ Contributions are welcome! Whether it's adding new regex patterns, improving the
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
-## 👨‍💻 Author
+## Author
 
 **CHHemant** — [GitHub Profile](https://github.com/CHHemant)
 
