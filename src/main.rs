@@ -60,7 +60,7 @@ fn main() {
     match cli.command {
         Commands::Scan { path } => {
             let target_path = path.unwrap_or_else(|| ".".to_string());
-            println!("🔍 Scanning {} for secrets...", target_path);
+            println!("Scanning {} for secrets...", target_path);
 
             let mut found_issues = false;
             let patterns = labeled_patterns();
@@ -75,7 +75,7 @@ fn main() {
                 if let Ok(content) = fs::read_to_string(path) {
                     for (pattern, name) in &patterns {
                         if pattern.is_match(&content) {
-                            println!("⚠️  {} found in {}", name.red(), path.display());
+                            println!("{} found in {}", name.red(), path.display());
                             found_issues = true;
                         }
                     }
@@ -83,17 +83,17 @@ fn main() {
             }
 
             if found_issues {
-                eprintln!("{}", "\n🛑 SafePush: Secrets detected! Commit blocked.".bright_red());
+                eprintln!("{}", "\n SafePush: Secrets detected! Commit blocked.".bright_red());
                 std::process::exit(1);
             } else {
-                println!("{}", "✅ No secrets found. Safe to push!".bright_green());
+                println!("{}", "No secrets found. Safe to push!".bright_green());
             }
         }
         Commands::Sanitize { path, output } => {
             let content = match fs::read_to_string(&path) {
                 Ok(c) => c,
                 Err(e) => {
-                    eprintln!("❌ Could not read file {}: {}", path, e);
+                    eprintln!("Could not read file {}: {}", path, e);
                     std::process::exit(1);
                 }
             };
@@ -106,10 +106,10 @@ fn main() {
             match output {
                 Some(ref out_path) => {
                     if let Err(e) = fs::write(out_path, sanitized) {
-                        eprintln!("❌ Could not write output {}: {}", out_path, e);
+                        eprintln!("Could not write output {}: {}", out_path, e);
                         std::process::exit(1);
                     }
-                    println!("✅ Sanitized file saved to {}", out_path);
+                    println!("Sanitized file saved to {}", out_path);
                 }
                 None => {
                     println!("{}", sanitized);
